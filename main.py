@@ -1,10 +1,14 @@
 import pygame, sys
 from button import Button
-
+# from scripts.utils import load_images , Animation
 
 pygame.init()
 SCREEN = pygame.display.set_mode((640, 480))
 pygame.display.set_caption("Menu")
+
+# assets = {
+#         'background': Animation(load_images('background'), img_dur=6),
+#         }
 
 BG = pygame.image.load("data/images/Background.png")
 
@@ -29,14 +33,14 @@ def options():
     while True:
         OPTIONS_MOUSE_POS = pygame.mouse.get_pos()
 
-        SCREEN.fill("white")
+        SCREEN.fill("black")
 
-        OPTIONS_TEXT = get_font(45).render("This is the OPTIONS screen.", True, "Black")
-        OPTIONS_RECT = OPTIONS_TEXT.get_rect(center=(640, 260))
+        OPTIONS_TEXT = get_font(15).render("This is the OPTIONS screen.", True, "White")
+        OPTIONS_RECT = OPTIONS_TEXT.get_rect(center=(320, 150))
         SCREEN.blit(OPTIONS_TEXT, OPTIONS_RECT)
 
-        OPTIONS_BACK = Button(image=None, pos=(640, 460), 
-                            text_input="BACK", font=get_font(75), base_color="Black", hovering_color="Green")
+        OPTIONS_BACK = Button(image=None, pos=(320, 260), 
+                            text_input="BACK", font=get_font(20), base_color="White", hovering_color="Green")
 
         OPTIONS_BACK.changeColor(OPTIONS_MOUSE_POS)
         OPTIONS_BACK.update(SCREEN)
@@ -53,7 +57,9 @@ def options():
 
 def main_menu():
     while True:
-        # SCREEN.blit(BG, (0, 0))
+        # SCREEN.blit(assets['background'], (0, 0))
+        # SCREEN.blit(pygame.image.load('data/images/background/1.png'), (0, 0))
+        SCREEN.fill("black")
 
         MENU_MOUSE_POS = pygame.mouse.get_pos()
 
