@@ -44,11 +44,12 @@ class Game:
 
         self.tilemap = Tilemap(self ,tile_size=16)
         
-        self.level = 0
+        self.level = 'map'
         self.load_level(self.level)
 
     def load_level(self, map_id):
-        self.tilemap.load('data/maps/' + str(map_id) + '.json')
+        # self.tilemap.load('data/maps/' + str(map_id) + '.json')
+        self.tilemap.load('' + str(map_id) + '.json')
 
         self.enemies = []
         for spawner in self.tilemap.extract([('spawners', 0), ('spawners', 1)]):
@@ -68,8 +69,8 @@ class Game:
 
     def run(self):
         while True:
-            # self.display.fill((36 , 36 , 36))
-            self.display.blit(self.assets['background'],(0,0))
+            self.display.fill((27 , 37 , 50))
+            # self.display.blit(self.assets['background'],(0,0))
 
             if not len(self.enemies):
                 self.transition += 1
@@ -87,8 +88,8 @@ class Game:
                 if self.dead > 40:
                     self.load_level(self.level)
 
-            self.scroll[0] += (self.player.rect().centerx - self.display.get_width()/4 - self.scroll[0]) 
-            self.scroll[1] += (self.player.rect().centery - self.display.get_height()/2 - self.scroll[1])
+            self.scroll[0] += (self.player.rect().centerx - self.display.get_width()/2 - self.scroll[0]) 
+            self.scroll[1] += (self.player.rect().centery - self.display.get_height()/1.5 - self.scroll[1])
             render_scroll = (int(self.scroll[0]),int (self.scroll[1]))
 
             self.tilemap.render(self.display, offset=render_scroll)

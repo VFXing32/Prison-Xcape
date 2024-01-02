@@ -3,7 +3,6 @@ from button import Button
 
 
 pygame.init()
-# SCREEN = pygame.display.set_mode((1280, 720))
 SCREEN = pygame.display.set_mode((640, 480))
 pygame.display.set_caption("Menu")
 
