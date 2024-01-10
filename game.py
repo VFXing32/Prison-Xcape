@@ -37,6 +37,7 @@ class Game:
             'gun': load_image('gun.png'),
             'projectile': load_image('projectile.png'),
             'sword': load_image('sword.png'),
+            'thor': load_image('thor.png'),
         }
 
         self.player = Player(self,(50,50),(8,15))
