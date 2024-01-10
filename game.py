@@ -7,6 +7,7 @@ from scripts.utils import load_image , load_images , Animation
 from scripts.entities import PhysicsEntity , Player ,Enemy
 from scripts.tilemap import Tilemap
 from scripts.particle import Particle
+from main import menu
 
 
 class Game:
@@ -27,7 +28,6 @@ class Game:
             'large_decor': load_images('tiles/large_decor'),
             'stone': load_images('tiles/stone'),
             'player': load_image('entities/player.png'),
-            'background': load_image('background.png'),
             'enemy/idle': Animation(load_images('entities/enemy/idle'), img_dur=6),
             'enemy/run': Animation(load_images('entities/enemy/run'), img_dur=4),
             'player/idle': Animation(load_images('entities/player/idle'), img_dur=6),
@@ -48,8 +48,7 @@ class Game:
         self.load_level(self.level)
 
     def load_level(self, map_id):
-        # self.tilemap.load('data/maps/' + str(map_id) + '.json')
-        self.tilemap.load('' + str(map_id) + '.json')
+        self.tilemap.load('data/maps/' + str(map_id) + '.json')
 
         self.enemies = []
         for spawner in self.tilemap.extract([('spawners', 0), ('spawners', 1)]):
@@ -75,8 +74,7 @@ class Game:
             if not len(self.enemies):
                 self.transition += 1
                 if self.transition > 30:
-                    self.level = min(self.level + 1, len(os.listdir('data/maps')) - 1)
-                    self.load_level(self.level)
+                    menu()
             if self.transition < 0:
                 self.transition += 1
 
@@ -118,8 +116,6 @@ class Game:
                         self.dead +=1
 
 
-
-            # print(self.tilemap.physics_rects_around(self.player.pos))
             for particle in self.particles.copy():
                 kill = particle.update()
                 particle.render(self.display, offset=render_scroll)

@@ -179,13 +179,13 @@ class Player(PhysicsEntity):
             self.air_time = 5
             return True
         
-    def render(self, surf, offset =(0,0)):
-        super().render(surf, offset=offset)
+    # def render(self, surf, offset =(0,0)):
+    #     super().render(surf, offset=offset)
 
-        if self.flip:
-            surf.blit(pygame.transform.flip(self.game.assets['thor'], True, False), (self.rect().centerx - 0 - self.game.assets['thor'].get_width() - offset[0], self.rect().centery - 8 - offset[1]))
-        else:
-            surf.blit(self.game.assets['thor'], (self.rect().centerx + 0 - offset[0], self.rect().centery - 8 - offset[1]))
+    #     if self.flip:
+    #         surf.blit(pygame.transform.flip(self.game.assets['thor'], True, False), (self.rect().centerx - 0 - self.game.assets['thor'].get_width() - offset[0], self.rect().centery - 8 - offset[1]))
+    #     else:
+    #         surf.blit(self.game.assets['thor'], (self.rect().centerx + 0 - offset[0], self.rect().centery - 8 - offset[1]))
 
     def dash(self):
         if not self.dashing:
