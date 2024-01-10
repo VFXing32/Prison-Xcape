@@ -7,7 +7,7 @@ import numpy as np
 pygame.init()
 SCREEN = pygame.display.set_mode((640, 480))
 pygame.display.set_caption("Menu")
-gif = imageio.get_reader("jail6x.gif")
+gif = imageio.get_reader("data/images/menuback.gif")
 frames = [pygame.surfarray.make_surface(np.rot90(frame)) for frame in gif]
 
 def get_font(size):
@@ -41,7 +41,7 @@ def options():
         pygame.display.update()
 
 def menu():
-    background_image = pygame.image.load("youwin.jpg")
+    background_image = pygame.image.load("data/images/youwin.jpg")
     while True:
         OPTIONS_MOUSE_POS = pygame.mouse.get_pos()
 
